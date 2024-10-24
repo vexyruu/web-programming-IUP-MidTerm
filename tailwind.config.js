@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,5 +18,17 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        function ({ addUtilities }) {
+            const newUtilities = {
+                '::selection': {
+                    backgroundColor: colors.orange[600], // Orange-600 background
+                    color: '#FFFFFF', // Red text color
+                },
+            };
+            addUtilities(newUtilities);
+        },
+    ],
+    darkMode: 'class',
 };
